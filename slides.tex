@@ -36,30 +36,6 @@
 
 \frame{\titlepage}
 
-% \begin{frame}
-%     \frametitle{feature}
-%     \framesubtitle{Externally}
-
-%     \begin{itemize}
-%         \item Each topic can have a \textit{retained} message
-%         \item This message is sent to each subscriber on topic subscribe
-%         \item A subscriber can subscribe to many topics at once using wildcards and receive many
-%         retained messages
-%     \end{itemize}
-
-%     \begin{center}
-%         \includegraphics[width=10cm, keepaspectratio]{images/retain-demo.png}
-%     \end{center}
-%     \lstinline{DeviceModel} and \lstinline{Owner}.
-
-%     \vspace{1cm}
-
-%     \begin{lstlisting}
-%       lst
-%     \end{lstlisting}
-
-% \end{frame}
-
 \begin{frame}
     \frametitle{Node Evacuation}
     \framesubtitle{Problem}
@@ -135,6 +111,16 @@
     \begin{center}
         \includegraphics[height=6cm, keepaspectratio]{images/rebalance.png}
     \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{EMQX Node Rebalance vs Node Evacuation}
+    \begin{itemize}
+        \item Node evacuation is \textbf{node-local} and only communicates with the local \lstinline{emqx_eviction_agent}
+        \item Node evacuation is \textbf{persistent} — node keeps rejecting connections after restart
+        \item Node rebalance is \textbf{distributed} and has a \textbf{coordinator} communictating with remote \lstinline{emqx_eviction_agent}s
+        \item Node rebalance is \textbf{ephemeral}. It immediately aborts if a participating node crashes
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
